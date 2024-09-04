@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:ididid/demo/boxing_facts/boxing_repository.dart';
 import 'package:ididid/pages/facts_page.dart';
 import 'package:ididid/variables/global_varibles.dart';
 import 'package:ididid/variables/my_colors.dart';
 import 'package:ididid/widgets/bottom_bar.dart';
+
+import '../demo/boxing_facts/fact_widget.dart';
 
 final GlobalKey<MainPageState> mainPageStateKey = GlobalKey<MainPageState>();
 
@@ -53,41 +56,14 @@ class MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: MyColors.background,
-      child: Stack(
-        children: [
-          Column(children: [
-            if (pageIndex == 0) FactsPage(),
-            if (pageIndex == 1) const Spacer(),
-            if (pageIndex == 2) const Spacer(),
-            if (pageIndex == 3) const Spacer(),
-            KeyboardVisibilityBuilder(
-              builder: (context, isKeyboardVisible) {
-                return Column(
-                  children: [
-                    if (!isKeyboardVisible)
-                      MainBottomNavigationBar(
-                        selectedIndex: pageIndex,
-                        firstButtonPressed: () {
-                          open0();
-                        },
-                        secondButtonPressed: () {
-                          open1();
-                        },
-                        thirdButtonPressed: () {
-                          open2();
-                        },
-                        forthButtonPressed: () {
-                          open3();
-                        },
-                      ),
-                  ],
-                );
-              },
-            ),
-          ]),
-        ],
+    return const Scaffold(
+      body: Center(
+        child: FactWiget(
+            imageName: Images.fact02,
+            factNumber: 'Fact 2',
+            title: 'Boxing Was An Established Sport In Ancient Greece',
+            description:
+                'Here’s an interesting boxing fact.As with many other sports, boxing as a formal sport has its roots in Ancient Greece.This ancient Greek boxing was known as Pygmachia.In fact, it existed as an Olympic sport as early as 688 BCE.ancient greek ceramic vessels depicting boxers The rules are however different from modern boxing that we know and love. Here are some of the rules. There were no time limits or rounds but rather the victor was decided if the opponent gave up or if he was incapacitated. There was no weight class in this sport and no ring either.Here’s a fun fact: the first winner of Olympic boxing was a man named Onomastus of Smyrna who was also the person who wrote the rules of ancient Greek boxing.'),
       ),
     );
   }

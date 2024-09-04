@@ -14,15 +14,8 @@ class Images {
   static const String fact07 = 'assets/images/fact_07.jpg';
 }
 
-class BoxingRepository extends StatefulWidget {
-  const BoxingRepository({super.key});
-
-  @override
-  State<BoxingRepository> createState() => _BoxingRepositoryState();
-}
-
-class _BoxingRepositoryState extends State<BoxingRepository> {
-  final _boxingFacts = [
+class Repository {
+  static final boxingFactsClass = [
     const FactWiget(
         imageName: Images.fact01,
         factNumber: 'Fact 1',
@@ -194,25 +187,4 @@ class _BoxingRepositoryState extends State<BoxingRepository> {
         description:
             'Here’s a boxing fact about the legendary Mike Tyson. As much as how fearsome he is in the ring, Mike Tyson is an avid animal lover. It was the 1980s. He rented an entire zoo for the evening. It was when he arrived at the gorilla enclosure that he saw something that didn’t sit with him well: one large silverback gorilla was bullying the other weaker gorillas. It was at this moment that he offered the zookeeper \$10,000 to open the enclosure. In his own words, he wanted to “smash that silverback’s snotbox.” Luckily for the gorilla, the zookeeper declined the offer.'),
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        physics: const BouncingScrollPhysics(),
-        itemCount: _boxingFacts.length,
-        itemBuilder: (BuildContext context, int index) {
-          final boxingFacts = _boxingFacts[index];
-          return Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: FactWiget(
-              videoController: boxingFacts.videoController,
-              imageName: boxingFacts.imageName,
-              factNumber: boxingFacts.factNumber,
-              title: boxingFacts.title,
-              description: boxingFacts.description,
-            ),
-          );
-        });
-  }
 }
